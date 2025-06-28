@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
-    <NoWarn>0618;CS0169</NoWarn>
+    <NoWarn>0618;CS0169;CS8602;IDE0051;CS8618</NoWarn>
   </PropertyGroup>
 
 
