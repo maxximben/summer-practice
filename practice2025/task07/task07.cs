@@ -13,12 +13,6 @@ public class SampleClass
     public void TestMethod() {}
 }
 
-public class SampleClass2
-{
-    public int Number { get; set; }
-    public void TestMethod() {}
-}
-
 public class DisplayNameAttribute : Attribute
 {
     public string DisplayName { get; set; }
