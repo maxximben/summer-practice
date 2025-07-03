@@ -44,14 +44,37 @@ public static class ReflectionHelper
         var methods = from method in type.GetMethods() where method.GetCustomAttribute<DisplayNameAttribute>() != null select method;
         var properties = from property in type.GetProperties() where property.GetCustomAttribute<DisplayNameAttribute>() != null select property;
 
+        if (displayName != null)
+        {
+            Console.WriteLine($"Имя класса: {displayName.DisplayName}");
+        }
+        else
+        {
+            Console.WriteLine($"{type.Name} не имеет аттрибута DisplayNameAttribute");
+        }
+
+        if (version != null)
+        {
+            Console.WriteLine($"Версия класса: {version.Major}.{version.Minor}");
+        }
+        else
+        {
+            Console.WriteLine($"У класса {type.Name} не указана версия.");
+        }
+
+        Console.WriteLine("Методы:");
+
+
         foreach (var method in methods)
         {
-            Console.WriteLine(method);
+            Console.WriteLine($"{method.GetCustomAttribute<DisplayNameAttribute>().DisplayName}: {method}");
         }
+
+        Console.WriteLine("Свойства:");
 
         foreach (var property in properties)
         {
-            Console.WriteLine(property);
+            Console.WriteLine($"{property.GetCustomAttribute<DisplayNameAttribute>().DisplayName}: {property}");
         }
     }
 }
