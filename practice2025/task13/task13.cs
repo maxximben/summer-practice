@@ -39,7 +39,7 @@ public class Student
 
 public class DataTimeConverter : JsonConverter<DateTime>
 {
-    private const string DATETIME_FORMAT = "dd/MM/yyyy";
+    private const string DATETIME_FORMAT = "dd-MM-yyyy";
     
     public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

@@ -41,7 +41,7 @@ public class task13tests
                            {
                              "FirstName": "Ivan",
                              "LastName": "Ivanov",
-                             "BirthDate": "01.01.2015",
+                             "BirthDate": "01-01-2015",
                              "Grades": [
                                {
                                  "Name": "Mathematics",
@@ -78,7 +78,7 @@ public class task13tests
                    {
                      "FirstName": "Ivan",
                      "LastName": "Ivanov",
-                     "BirthDate": "01.01.2015",
+                     "BirthDate": "01-01-2015",
                      "Grades": [
                        {
                          "Name": "Mathematics",
@@ -126,7 +126,7 @@ public class task13tests
     public void DataTimeConverter_SerializesDateTime_CorrectFormat()
     {
         var date = new DateTime(2015, 01, 01);
-        var expected = "\"01.01.2015\"";
+        var expected = "\"01-01-2015\"";
         var json = JsonSerializer.Serialize(date, options);
         Assert.Equal(expected, json);
     }
@@ -134,7 +134,7 @@ public class task13tests
     [Fact]
     public void DataTimeConverter_DeserializesDateTime_CorrectFormat()
     {
-        var json = "\"01.01.2015\"";
+        var json = "\"01-01-2015\"";
         var expected = new DateTime(2015, 01, 01);
         var date = JsonSerializer.Deserialize<DateTime>(json, options);
         Assert.Equal(expected, date);
