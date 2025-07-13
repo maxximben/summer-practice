@@ -4,6 +4,11 @@ public class DefiniteIntegral
 {
     public static double Calculate(double a, double b, Func<double, double> function, double step)
     {
+        if (b < a)
+        {
+            return -Calculate(b, a, function, step);
+        }
+
         double result = 0;
         double current = a;
         while (current < b)
@@ -12,8 +17,7 @@ public class DefiniteIntegral
             result += (function(current) + function(next)) / 2 * (next - current);
             current = next;
         }
-
-        return b < a ? -result : result;
+        return result;
     }
 
     public static double Solve(double a, double b, Func<double, double> function, double step, int threadsNumber)
@@ -32,9 +36,11 @@ public class DefiniteIntegral
             double end = a + (i + 1) * intervalLength;
             threads[i] = new Thread(() =>
             {
+                double localSum = Calculate(start, end, function, step);
+                
                 lock (locker)
                 {
-                    sum += Calculate(start, end, function, step);
+                    sum += localSum;
                 }
 
                 barrier.SignalAndWait();
